@@ -35,9 +35,17 @@ void solve() {
         cout << x << endl;
     }
     else
-    {
+    {   int x;
         // n is even but k is odd
-        int  x = (n+k-1)/(k-1); //ceil value 
+        if(n%(k-1)!=0)
+        {
+            x = (n+k-1)/(k-1); //ceil value 
+        }
+        else
+        {
+            x = n/(k-1);
+            // cout << "here";
+        }
         cout << x << endl;
     }
 }
