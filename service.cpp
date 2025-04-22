@@ -4,9 +4,6 @@ using namespace std;
 int main() {
     int t;
     cin >> t;
-    while (t-- > 0) {
-        // Your code here
-        
-    }
+    cout << (t | (t-1)) << endl;
     return 0;
 }
