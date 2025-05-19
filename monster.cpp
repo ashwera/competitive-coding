@@ -1,53 +1,51 @@
 #include <bits/stdc++.h>
+#define int long long
 using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int deficit =0 ;
-    vector <int> A (n);
-    vector <int> B (n);
-    bool found = false;
-    bool possible = true;
-    int exception = -1;
-    for(int i=0;i<n;i++) cin >> A[i];
-    for(int i=0;i<n;i++) 
-    {
-        cin >> B[i];
-        if(A[i]<B[i] && !found)
-        {
-            deficit = B[i]-A[i];
-            found = true;
-            exception = i;
-        }
-        else if(A[i]<B[i] && found)
-        {
-            possible = false; 
-            //there are more than 1 deficits.
-        }
+    int n, k;
+    cin >> n >> k;
+    vector<int> health(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> health[i];
+        health[i] = health[i]%k;
+        if(health[i]==0) health[i]=k;
     }
-    // cout << deficit << " is the deficit" << endl;
-    // cout << exception << " is the exception."<<endl;
-    if(possible && found)
-    {
-        for(int i=0;i<n;i++)
-        {
-        if((A[i]-deficit) < B[i] && i!=exception)
-        {
-            possible = false;
-            break;
-        }
-        }
-    }
-    if(possible) cout << "YES" << endl;
-    else cout << "NO" << endl;
-}
 
-int main()
-{
+    // max-heap: (current_health, -index)
+    // Use -index to prioritize smaller index when health is equal (normal heaps prioritise higher index)
+    priority_queue<pair<int, int>> pq;
+    for (int i = 0; i < n; ++i) {
+        pq.push({health[i], -i});
+    }
+
+    vector<int> answer;
+    while (!pq.empty()) {
+        auto [currenthealth, negindex] = pq.top(); //hold the first entity
+        pq.pop(); 
+        int idx = -negindex;
+        currenthealth -= k;
+
+        if (currenthealth > 0) {
+            pq.push({currenthealth, -idx});
+        } else {
+            answer.push_back(idx + 1);  // +1 for 1-based index
+        }
+    }
+
+    for (int id : answer) {
+        cout << id << " ";
+    }
+    cout << "\n";
+
+}
+signed main() {
     int t;
     cin >> t;
-    while(t-->0)
-    solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
 }
