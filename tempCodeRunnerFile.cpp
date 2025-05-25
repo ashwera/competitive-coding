@@ -3,40 +3,18 @@ using namespace std;
 #define int long long
 
 void solve() {
-    int n, k, b, s;
-    cin >> n >> k >> b >> s;
-    //fill n with max beauty first
-    vector<int>v(n,0);
-    int beautifulcell = (k*(b+1)); //all beauty in one cell
-    if((s/k) < b) 
+    int n;
+    cin >> n;
+    vector<double> v(n);
+    int count=0;
+    for(int i=0;i<n;i++)
     {
-        cout << -1 << endl;
-        return;
+        cin >> v[i];
+        double sqroot = sqrt(v[i]);
+        if(sqroot*sqroot == v[i])
+        count++;
     }
-    v[0] = beautifulcell;
-    int a=1;
-    while(s)
-    {
-        //fill up with all beauty first
-        v[a] = min(s,k-1); //so that beauty remians 0 for all cells
-        int remain = s - v[a];
-        s = remain;
-    }
-    int total=0;
-    for(int num:v)
-    {
-        total+=num;
-    }
-    if(total!=s)
-    {
-        cout << -1 << endl;
-        return;
-    }
-    for(int num:v)
-    {
-        cout << num <<" ";
-    }
-    cout << endl;
+    cout << count << endl;
 }
 signed main() {
     int t;
