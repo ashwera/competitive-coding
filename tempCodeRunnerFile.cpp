@@ -1,4 +1,1 @@
- // if(alrbest)
-    // {        
-    //     cout << n+breaks << endl; return;
-    // } 
+g1
