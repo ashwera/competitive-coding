@@ -2,35 +2,45 @@
 using namespace std;
 #define int long long
 
-int mod(int a, int m) {
-    return (a % m + m) % m;
-}
-
 void solve() {
-    int n,k;
-    cin >> n >> k;
-    int hrs=k;
-    int bumps = 0;
-    //first bump happens at n+1/2 and 2nd onwards it happens at next n/2th
-    //no bumps if n is even
-    k -= (n+1)/2; 
-
-    if (k > -1)  //k didnt end before bump 
-    bumps++;
-
-    while(k>0)
+    int n;
+    cin >> n;
+    int total = (n-1)*n/2;//sum of first n-1 natural numbers
+    // cout << total <<endl ;//debug
+    if(n%2==0) //we will have n-1 ties. each tie happens after n-2, n-3, n-4...
     {
-        k -= (n/2);
-        if (k > -1)  //k didnt end before bump 
-        bumps++;
+        int column=1;
+        while(total>0)
+        {
+            int counter = n-column-1;
+            while(counter>1)
+            {
+                cout  << "1 -1 ";
+                total-=2;
+                counter-=2;
+            }
+            if(counter==1)
+            {
+                cout << 1 << " ";
+                total--;
+                counter--;
+            }
+            cout << 0 << " ";
+            total--;
+            column++;
+        }
     }
-    if (n%2==0)
+    else
     {
-        bumps=0;
+        //no ties. alternate win lose win lose 
+        while(total>1)
+        {
+            cout << "1 -1 ";
+            total-=2;
+        }
+        if(total) cout << 1;
     }
-    int b = (bumps+hrs)%n;
-    if (b==0) b=n;
-    cout << b << endl;
+    cout  << endl;
 }
 signed main() {
     int t;
