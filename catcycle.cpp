@@ -13,20 +13,17 @@ void solve() {
     int bumps = 0;
     //first bump happens at n+1/2 and 2nd onwards it happens at next n/2th
     //no bumps if n is even
-    k -= (n+1)/2; 
-
-    if (k > -1)  //k didnt end before bump 
-    bumps++;
-
-    while(k>0)
-    {
-        k -= (n/2);
-        if (k > -1)  //k didnt end before bump 
-        bumps++;
-    }
     if (n%2==0)
     {
         bumps=0;
+    }
+    else
+    {
+        k -= (n + 1) / 2;
+        if (k >= 0)
+        bumps = 1 + (k / (n / 2)); // integer division
+        else
+        bumps = 0;
     }
     int b = (bumps+hrs)%n;
     if (b==0) b=n;
