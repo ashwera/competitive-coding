@@ -12,7 +12,7 @@ using namespace std;
  
 //leetcode 103
 class Solution {
-pubpublic:
+public:
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>>ans;
         if(root==NULL) return ans;
