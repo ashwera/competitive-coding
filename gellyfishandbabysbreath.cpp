@@ -3,12 +3,6 @@ using namespace std;
 #define modulo 998244353
 #define int long long
 
-//cant implement
-//idea is to use the index at which sum of pairs is highest.
-//tried hacking by using max element in each array, but that does not guarantee max sum for v large numbers
-//example 5 2 10
-//        0 9 8 for three. here, 13 is the max sum but this algo cannot detect. :(
-
 int modpow(int base, int exp, int mod)
 {
     int result=1;

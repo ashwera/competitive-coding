@@ -5,42 +5,60 @@ using namespace std;
 void solve() {
     int n;
     cin >> n;
-    int total = (n-1)*n/2;//sum of first n-1 natural numbers
-    // cout << total <<endl ;//debug
-    if(n%2==0) //we will have n-1 ties. each tie happens after n-2, n-3, n-4...
+    vector<int>v(n);
+    cin>>v[0];
+    int result = v[0];
+    for(int i=1;i<n;i++)
     {
-        int column=1;
-        while(total>0)
+        cin >> v[i];
+        result = gcd(result,v[i]);
+    }
+    int count=0;
+    for(int i=0;i<n;i++)
+    {
+        v[i]/=result;
+        if(v[i]==1)
         {
-            int counter = n-column-1;
-            while(counter>1)
-            {
-                cout  << "1 -1 ";
-                total-=2;
-                counter-=2;
-            }
-            if(counter==1)
-            {
-                cout << 1 << " ";
-                total--;
-                counter--;
-            }
-            cout << 0 << " ";
-            total--;
-            column++;
+            count++;
         }
     }
-    else
+    if(count)
     {
-        //no ties. alternate win lose win lose 
-        while(total>1)
-        {
-            cout << "1 -1 ";
-            total-=2;
-        }
-        if(total) cout << 1;
+        cout << n-count << endl;
+        return;
     }
-    cout  << endl;
+
+    int mincount=1e18;
+    //else 
+    //calculate min operations to make any element as 1  
+    for(int i=0;i<n;i++)
+    {
+        count=0; //count nubmer of ops to make i as 1
+        for(int j=0;j<n;j++)
+        {
+            if(j!=i)
+            {
+                v[i] = gcd(v[i],v[j]); 
+                count++;
+                if(v[i]==1)
+                {
+                    mincount=min(mincount,count);
+                    break;
+                }
+            }
+        }
+    }
+    // cout << mincount << endl;
+    //ans = mincount + n - 1
+    //6 10 15
+    //1 10 15
+    //1 1 15
+    // 1 1 1 
+    //four ops because 
+    //mincount=1 and n=3, ans is mc+n-1, 1+2? and add counts if any 
+    int ans = mincount + n - 1;
+    if(result!=1) ans++;
+    cout << ans << endl;
 }
 signed main() {
     int t;
