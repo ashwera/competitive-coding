@@ -3,90 +3,63 @@ using namespace std;
 #define modulo 998244353
 #define int long long
 
-int modpow(int base, int exp, int mod)
+int modpow(int a, int b)
 {
-    int result=1;
-    base%=mod;
-     while (exp > 0) {
-        if (exp % 2 == 1) result = (result * base) % mod;
-        base = (base * base) % mod;
-        exp /= 2;
-    }
-    return result;
+    if (b == 0)
+        return 1;
+    int res = modpow(a, b / 2) % 998244353;
+    if (b % 2)
+        return res * res * a % 998244353;
+    else
+        return res * res % 998244353;
 }
+ 
 
 void solve() {
     int n;
     cin >> n;
-    vector<int> a(n), amax (n), bmax(n), b(n), r(n);
+    vector<int> a(n), b(n), r(n);
     // map<int,int>amax;
-    int maxval= -1e18;
+    int maxina=0,maxinb=0;
+    
     for(int i=0;i<n;i++)
     {
         cin >> a[i];
-        if(i==0) {
-            amax[i]=0;
-            maxval = a[0];
-        }
-        else{
-            //store the index of max value so far 
-            if(a[i]>maxval)
-            {
-                amax[i] = i;
-                maxval = a[i];
-                // cout << "here\n";
-            }else
-            {
-                amax[i] = amax[i-1];
-            }
-        }
-        // cout << amax[i] << " ";
     }
-    // cout << endl;
-    maxval=-1e18;
+   
     for(int i=0;i<n;i++)
     {
         cin >> b[i];
-        if(i==0) {
-            bmax[i]=0;
-            maxval = b[0];
-        }
-        else{
-            //store the index of max value so far 
-            if(b[i]>maxval)
-            {
-                bmax[i] = i;
-                maxval = b[i];
-                // cout << "here\n";
-            }else
-            {
-                bmax[i] = bmax[i-1];
-            }
-        }
     }
-    //for r[k], amax[i] is the max value in a till i.  pick that value and its partner b[j] such that j = i-k 
 
-    //consider max in a 
     for(int i=0;i<n;i++)
     {
-        //power of p
-        // int p = 1 << a[amax[i]];
-        int p = modpow(2, a[amax[i]], modulo);
-        // int q = 1 << b[amax[i]-i];
-        int q = modpow(2, b[i-amax[i]], modulo);
-        // cout << a[amax[i]] << " " << b[i-amax[i]] << " " << p << " " << q << endl;
-        r[i] = (p + q) % modulo;
-    }
-    //condier max in b
-    for(int i=0;i<n;i++)
-    {
-        //power of p
-        // int p = 1 << a[amax[i]];
-        int p = modpow(2, a[i-bmax[i]], modulo);
-        // int q = 1 << b[amax[i]-i];
-        int q = modpow(2, b[bmax[i]], modulo);
-        // cout << a[amax[i]] << " " << b[i-amax[i]] << " " << p << " " << q << endl;
-        r[i] = max(r[i], (p + q) % modulo);
+        if(a[i] > a[maxina])
+        {
+            maxina=i;
+        }
+
+        if(b[i] > b[maxinb])
+        {
+            maxinb=i;
+        }
+
+        if(a[maxina] > b[maxinb])
+        {
+            r[i] = (modpow(2,a[maxina]) + modpow(2,b[i-maxina]))%modulo;
+        }
+        else if(a[maxina] < b[maxinb])
+        {
+            r[i] = (modpow(2,b[maxinb]) + modpow(2,a[i-maxinb]))%modulo;
+        } //if they're equal, choose the next big option.
+        else if(b[i-maxina] > a[i-maxinb])
+        {
+            r[i] = (modpow(2,a[maxina]) + modpow(2,b[i-maxina]))%modulo;
+        }
+        else
+        {
+            r[i] = (modpow(2,b[maxinb]) + modpow(2,a[i-maxinb]))%modulo;  
+        }
     }
     for(int num:r)
     {

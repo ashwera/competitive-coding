@@ -2,63 +2,28 @@
 using namespace std;
 #define int long long
 
-void solve() {
-    int n;
-    cin >> n;
-    vector<int>v(n);
-    cin>>v[0];
-    int result = v[0];
-    for(int i=1;i<n;i++)
-    {
-        cin >> v[i];
-        result = gcd(result,v[i]);
+int highestPowerOf2LessThan(int n) {
+    if (n <= 1) return 0;
+    int res = 1;
+    while (res * 2 < n) {
+        res *= 2;
     }
-    int count=0;
-    for(int i=0;i<n;i++)
-    {
-        v[i]/=result;
-        if(v[i]==1)
-        {
-            count++;
-        }
-    }
-    if(count)
-    {
-        cout << n-count << endl;
-        return;
-    }
+    return res;
+}
 
-    int mincount=1e18;
-    //else 
-    //calculate min operations to make any element as 1  
-    for(int i=0;i<n;i++)
+void solve() {
+    int n,k;
+    cin >> n >> k;
+    vector<int>ans(n);
+    //add highest power of 2 in one cell
+    //remaining in the rest
+    ans[0]=highestPowerOf2LessThan(k);
+    ans[1]=k-ans[0];
+    for(int i:ans)
     {
-        count=0; //count nubmer of ops to make i as 1
-        for(int j=0;j<n;j++)
-        {
-            if(j!=i)
-            {
-                v[i] = gcd(v[i],v[j]); 
-                count++;
-                if(v[i]==1)
-                {
-                    mincount=min(mincount,count);
-                    break;
-                }
-            }
-        }
+        cout << i << " ";
     }
-    // cout << mincount << endl;
-    //ans = mincount + n - 1
-    //6 10 15
-    //1 10 15
-    //1 1 15
-    // 1 1 1 
-    //four ops because 
-    //mincount=1 and n=3, ans is mc+n-1, 1+2? and add counts if any 
-    int ans = mincount + n - 1;
-    if(result!=1) ans++;
-    cout << ans << endl;
+    cout << endl;
 }
 signed main() {
     int t;
