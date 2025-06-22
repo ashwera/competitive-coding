@@ -2,7 +2,7 @@
 using namespace std;
 #define int long long
 
-//PROBLEM HERE: FAILS wrong answer 79th numbers differ - expected: '1', found: '2' Ṇ
+//PROBLEM HERE: FAILS wrong answer 79th numbers differ - expected: '1', found: '2' 
 
 void print(vector<bool> v)
 {
@@ -71,7 +71,7 @@ void solve() {
 }
 signed main() {
     int t;
-    cin >> t;
+    cin >> t;X
     while (t-- > 0) {
         solve(); 
     }
