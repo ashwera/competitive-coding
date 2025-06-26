@@ -43,7 +43,7 @@ void solve() {
             }
         }
         // cout << "bob just ate: " << bob << endl;
-        cout << i << " " << n << endl;
+        // cout << i << " " << n << endl;
         if(n>i) {
             moves++;
             alice=0;
