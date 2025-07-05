@@ -14,8 +14,7 @@ void solve() {
     {
         if(s[i]=='1') one++;
     }
-    if(k==1 && one!=1) bob
-    else if(k >= one || k >=(n+1)/2)
+    if(k >= one || k >=(n/2)+1)
     alice
     else bob
 }
