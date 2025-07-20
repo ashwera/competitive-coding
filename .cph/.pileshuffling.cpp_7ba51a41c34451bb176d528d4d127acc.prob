@@ -1,0 +1,1 @@
+{"name":"Local: pileshuffling","url":"c:\\Users\\syeda\\OneDrive\\Desktop\\competitive-coding\\pileshuffling.cpp","tests":[{"id":1752938235991,"input":"1\n3\n2 0 2 2\n0 1 1 0\n1 1 0 0\n","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\syeda\\OneDrive\\Desktop\\competitive-coding\\pileshuffling.cpp","group":"local","local":true}

@@ -9,7 +9,7 @@ void solve() {
 int n,k; cin >> n >> k;
 vector <int> v(n);
 input
-int cur = v[k-1];
+int cur = v[k-1]; 
 //only care about after cur element 
 sort(v.begin(),v.end());
 auto it = find(v.begin(),v.end(),cur);
@@ -18,30 +18,16 @@ auto lb = lower_bound(v.begin(),v.end(),v[n-1]);
 int lbi = lb - v.begin();
 // int maxel = *max_element(v.begin(),v.end());
 int x=0;
-for(int i=idx+1;i<=lbi;i++)
-{
-    //next element should be in range e+1, 2e
+int time = 0;
+for (int i = idx + 1; i < n; ++i) {
     int next = v[i];
-    // cout << cur << " " << next << endl;
-    if(next==cur) continue;
-    if((next+x)<cur+1 || (next+x)>(2*cur))
-    {
-        // cout << v[i] << " " << cur << " " << next << endl;
-        // if(v[i]==v[n-1])break;
-
+    int d = abs(next - cur);
+    if (time + d > cur) {
         no
         return;
     }
-    else  
-    {
-        x = next-cur;
-        cur = next;
-        if(cur==v[n-1])
-        {
-            // cout <<"her";
-            break;
-        }
-    }
+    time += d;
+    cur = next;
 }
 yes
 }
