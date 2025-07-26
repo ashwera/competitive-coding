@@ -1,20 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
-#define yes cout << "YES"  << endl;
-#define no cout << "NO" << endl;
+#define yes cout << "1"  << endl;
+#define no cout << "2" << endl;
 #define input for(int &i:v) cin >> i;
 
 void solve() {
-int x,y,k;
-cin >> x >> y >> k;
-int hcf = gcd(x,y);
-if(x==0 && y==0) cout <<0<< endl;
-else if(k>hcf && hcf!=1)
-cout << 1 << endl;
-else if(k>x && k>y)
-cout << 1 << endl;
-else cout << 2 << endl;
+int a,b,k;
+cin >> a >> b >> k;
+int hcf = gcd(a,b);
+if(k>=max(a,b)) yes
+else if(a==b) yes
+else if(max(a,b)/hcf <=k)yes
+else
+no
 }
 signed main() {
 ios::sync_with_stdio(false);

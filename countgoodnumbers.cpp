@@ -6,7 +6,6 @@ using namespace std;
 #define input for(int &i:v) cin >> i;
 
 //set theory. 
-
 int count_div(int l, int r, int x) {
     return r / x - (l - 1) / x;
 }
@@ -25,22 +24,28 @@ void solve() {
     int total = r - l + 1;
     int bad = 0;
 
-    for (int mask = 1; mask < (1 << 4); ++mask) {
+    for (int mask = 1; mask < (1 << 4); ++mask) 
+    {
+        //mask represents binary numbers. starts at 0001. should be less than 1<<4, i.e. 2^4. 
+        //whicever bit of mask is set, consider that element in primes[]
+
         int div = 1;
         int bits = 0;
-        for (int i = 0; i < 4; ++i) {
-            if (mask & (1 << i)) {
-                div = lcm(div, primes[i]);
-                ++bits;
+        for (int i = 0; i < 4; ++i) //each bit of mask 
+        {
+            if (mask & (1 << i))  //if bit is set (check if mask&2^i)
+            {
+                div = lcm(div, primes[i]); //update lcm of all numbers in subset 
+                ++bits;//increase number of set bits
             }
         }
-        int cnt = count_div(l, r, div);
+        int cnt = count_div(l, r, div); 
         if (bits % 2 == 1) bad += cnt;
         else bad -= cnt;
     }
 
     int good = total - bad;
-    cout << good << '\n';
+    cout << good << endl;
 }
 
 signed main() {
