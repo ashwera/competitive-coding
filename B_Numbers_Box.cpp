@@ -15,7 +15,7 @@ void solve() {
     int n,m;
     cin >> n >> m;
     vector<int>v(n);
-    int zeros,size,sum=0;
+    int zeros=0,size=0,sum=0;
     int minel = 120;
     for(int i=0;i<n;i++)
     {
