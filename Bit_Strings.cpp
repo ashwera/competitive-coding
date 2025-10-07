@@ -3,20 +3,24 @@ using namespace std;
 #define int long long
 #define yes cout << "YES"  << endl;
 #define no cout << "NO" << endl;
+#define MOD 1000000007ll;
 #define input for(int &i:v) cin >> i;
 
-void solve() {
-    int n; cin >> n;
-    int ans=0;
-    int i=1;
-    //agp
-    while(true){
-        int val = n/pow(5,i);
-        i++;
-        ans += val;
-        if(val==0) break;
+long long binexp(long long a, long long b) {
+    long long res = 1;
+    a %= MOD;
+    while (b > 0) {
+        if (b & 1)
+            res = (res * a) % MOD;
+        a = (a * a) % MOD;
+        b >>= 1;
     }
-    cout << ans << endl;
+    return res;
+}
+
+void solve() {
+     int n; cin >> n;
+    cout << binexp(2,n) << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);

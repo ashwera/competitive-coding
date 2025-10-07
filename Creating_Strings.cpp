@@ -6,17 +6,18 @@ using namespace std;
 #define input for(int &i:v) cin >> i;
 
 void solve() {
-    int n; cin >> n;
-    int ans=0;
-    int i=1;
-    //agp
-    while(true){
-        int val = n/pow(5,i);
-        i++;
-        ans += val;
-        if(val==0) break;
+    string s;
+    cin >> s;
+    sort(s.begin(),s.end());
+    vector<string> ans;
+    do{
+        ans.push_back(s);
+    }while(next_permutation(s.begin(),s.end()));
+
+    cout << ans.size() << endl;
+    for(string x:ans){
+        cout << x << endl;
     }
-    cout << ans << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);

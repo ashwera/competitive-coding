@@ -5,24 +5,27 @@ using namespace std;
 #define no cout << "NO" << endl;
 #define input for(int &i:v) cin >> i;
 
-void solve() {
-    int n; cin >> n;
-    int ans=0;
-    int i=1;
-    //agp
-    while(true){
-        int val = n/pow(5,i);
-        i++;
-        ans += val;
-        if(val==0) break;
+void print(const vector<int>& v) {
+    for (int i : v) {
+        cout << i << " ";
     }
-    cout << ans << endl;
+    cout << endl;
+}
+
+void solve() {
+    string n;
+    cin >> n;
+    if(n.size()==1) {
+        cout << n << endl;
+        return;
+    }
+    cout << (n.size()-1)*9 + (n[0] -'0') << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-    int t=1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t-- > 0) {
         solve();
     }

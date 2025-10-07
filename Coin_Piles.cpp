@@ -5,24 +5,20 @@ using namespace std;
 #define no cout << "NO" << endl;
 #define input for(int &i:v) cin >> i;
 
+
 void solve() {
-    int n; cin >> n;
-    int ans=0;
-    int i=1;
-    //agp
-    while(true){
-        int val = n/pow(5,i);
-        i++;
-        ans += val;
-        if(val==0) break;
-    }
-    cout << ans << endl;
+    int l,r;
+    cin >> l >> r;
+    bool valid = false;
+    if(min(l,r)*2 >= max(l,r)) valid = true;
+    if((l+r) % 3 == 0 && valid) yes
+    else no
 }
 signed main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-    int t=1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t-- > 0) {
         solve();
     }
