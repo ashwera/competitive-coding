@@ -17,30 +17,19 @@ void solve() {
     int n; cin >> n;
     vector <int> v(n);
     input
-    vector<int>ans(n);
-    int a=1;
-    ans[0]=a;
-    for(int i=1;i<n;i++){
-        if(v[i]-v[i-1]==i+1){
-            a++;
-            ans[i]=a;
-        }
-        else if(v[i-1]+1 == v[i]){
-            ans[i]=ans[i-1];
-        }
-        else {
-            //find position 
-            int index = v[i]-v[i-1]-1;
-            ans[i]=ans[i-index-1];
-        }
+    sort
+    int median = n%2==1 ? v[n/2] : v[n/2 - 1];
+    int cost=0;
+    for(int x:v){
+        cost += abs(x-median);
     }
-    print(ans);
+    cout << cost << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >> t
     while (t-- > 0) {
         solve();
     }

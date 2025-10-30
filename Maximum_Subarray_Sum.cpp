@@ -17,30 +17,21 @@ void solve() {
     int n; cin >> n;
     vector <int> v(n);
     input
-    vector<int>ans(n);
-    int a=1;
-    ans[0]=a;
-    for(int i=1;i<n;i++){
-        if(v[i]-v[i-1]==i+1){
-            a++;
-            ans[i]=a;
+    int maxsum=v[0],cur=0;
+    for(int i=0;i<n;i++){
+        if(cur<0){
+            cur=0;
         }
-        else if(v[i-1]+1 == v[i]){
-            ans[i]=ans[i-1];
-        }
-        else {
-            //find position 
-            int index = v[i]-v[i-1]-1;
-            ans[i]=ans[i-index-1];
-        }
+        cur+=v[i];
+        maxsum = max(maxsum,cur);
     }
-    print(ans);
+    cout << maxsum << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >>/ t;
     while (t-- > 0) {
         solve();
     }

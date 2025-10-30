@@ -4,7 +4,7 @@ using namespace std;
 #define yes cout << "YES"  << endl;
 #define no cout << "NO" << endl;
 #define input for(int &i:v) cin >> i;
-#define sort sort(v.begin(),v.end());
+#define sort sort(v.rbegin(),v.rend());
 
 void print(const vector<int>& v) {
     for (int i : v) {
@@ -17,24 +17,8 @@ void solve() {
     int n; cin >> n;
     vector <int> v(n);
     input
-    vector<int>ans(n);
-    int a=1;
-    ans[0]=a;
-    for(int i=1;i<n;i++){
-        if(v[i]-v[i-1]==i+1){
-            a++;
-            ans[i]=a;
-        }
-        else if(v[i-1]+1 == v[i]){
-            ans[i]=ans[i-1];
-        }
-        else {
-            //find position 
-            int index = v[i]-v[i-1]-1;
-            ans[i]=ans[i-index-1];
-        }
-    }
-    print(ans);
+    sort 
+    print(v);
 }
 signed main() {
 ios::sync_with_stdio(false);

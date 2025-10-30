@@ -17,24 +17,23 @@ void solve() {
     int n; cin >> n;
     vector <int> v(n);
     input
-    vector<int>ans(n);
-    int a=1;
-    ans[0]=a;
-    for(int i=1;i<n;i++){
-        if(v[i]-v[i-1]==i+1){
-            a++;
-            ans[i]=a;
+    int neg=0;
+    int index;
+    for(int i=0;i<n;i++){
+        if(v[i]<0) neg++;
+        if(v[i]==0){
+            cout << 0 << endl;
+            return;
         }
-        else if(v[i-1]+1 == v[i]){
-            ans[i]=ans[i-1];
-        }
-        else {
-            //find position 
-            int index = v[i]-v[i-1]-1;
-            ans[i]=ans[i-index-1];
-        }
+        index=i;
     }
-    print(ans);
+    if(neg%2==0){
+        cout << 1 << endl;
+        cout << index+1 << " " << 0 << endl;
+    }
+    else{
+        cout << 0 << endl;
+    }
 }
 signed main() {
 ios::sync_with_stdio(false);

@@ -15,26 +15,18 @@ void print(const vector<int>& v) {
 
 void solve() {
     int n; cin >> n;
-    vector <int> v(n);
-    input
-    vector<int>ans(n);
-    int a=1;
-    ans[0]=a;
-    for(int i=1;i<n;i++){
-        if(v[i]-v[i-1]==i+1){
-            a++;
-            ans[i]=a;
-        }
-        else if(v[i-1]+1 == v[i]){
-            ans[i]=ans[i-1];
-        }
-        else {
-            //find position 
-            int index = v[i]-v[i-1]-1;
-            ans[i]=ans[i-index-1];
+    string s;
+    cin >> s;
+    vector<bool>seen(26,false);
+    int ans=0;
+    for(int i=0;i<n;i++){
+        char ch = s[i];
+        if(seen[ch-'a']==false) {
+            seen[ch-'a']=true;
+            ans += n-i;
         }
     }
-    print(ans);
+    cout << ans << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);

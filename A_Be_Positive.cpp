@@ -16,25 +16,14 @@ void print(const vector<int>& v) {
 void solve() {
     int n; cin >> n;
     vector <int> v(n);
-    input
-    vector<int>ans(n);
-    int a=1;
-    ans[0]=a;
-    for(int i=1;i<n;i++){
-        if(v[i]-v[i-1]==i+1){
-            a++;
-            ans[i]=a;
-        }
-        else if(v[i-1]+1 == v[i]){
-            ans[i]=ans[i-1];
-        }
-        else {
-            //find position 
-            int index = v[i]-v[i-1]-1;
-            ans[i]=ans[i-index-1];
-        }
+    int z=0,mo=0;
+    for(int i=0;i<n;i++){
+        cin >> v[i];
+        if(v[i]==-1) mo++;
+        if(v[i]==0)z++;
     }
-    print(ans);
+    if(mo%2==0) mo=0; else mo=1;
+    cout << 2*mo + z << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);

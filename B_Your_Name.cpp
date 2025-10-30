@@ -4,7 +4,6 @@ using namespace std;
 #define yes cout << "YES"  << endl;
 #define no cout << "NO" << endl;
 #define input for(int &i:v) cin >> i;
-#define sort sort(v.begin(),v.end());
 
 void print(const vector<int>& v) {
     for (int i : v) {
@@ -15,26 +14,11 @@ void print(const vector<int>& v) {
 
 void solve() {
     int n; cin >> n;
-    vector <int> v(n);
-    input
-    vector<int>ans(n);
-    int a=1;
-    ans[0]=a;
-    for(int i=1;i<n;i++){
-        if(v[i]-v[i-1]==i+1){
-            a++;
-            ans[i]=a;
-        }
-        else if(v[i-1]+1 == v[i]){
-            ans[i]=ans[i-1];
-        }
-        else {
-            //find position 
-            int index = v[i]-v[i-1]-1;
-            ans[i]=ans[i-index-1];
-        }
-    }
-    print(ans);
+    string s; string t;
+    cin >> s >> t;
+    sort(s.begin(),s.end());
+    sort(t.begin(),t.end());
+    if(s==t) yes else no
 }
 signed main() {
 ios::sync_with_stdio(false);
