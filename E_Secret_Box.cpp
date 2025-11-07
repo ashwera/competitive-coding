@@ -14,10 +14,19 @@ void print(const vector<int>& v) {
 }
 
 void solve() {
-    int n; cin >> n;
-    vector <int> v(n);
-    input
-
+    int a,b,c,k;
+    cin >> a >> b >> c >> k;
+    int ans=-1;
+    for(int x=1;x<=a;x++){
+        for(int y=1;y<=b;y++){
+            if(k % (x*y)!=0) continue;
+            int z = k/(x*y);
+            int ways = (a-x+1)*(b-y+1)*(c-z+1);
+            ans = max(ans,ways);
+        }
+    }
+    if(ans<0) ans=0;
+    cout << ans << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);
@@ -28,4 +37,3 @@ cin.tie(0);
         solve();
     }
 }
-

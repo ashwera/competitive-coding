@@ -14,10 +14,22 @@ void print(const vector<int>& v) {
 }
 
 void solve() {
-    int n; cin >> n;
-    vector <int> v(n);
-    input
-
+    int hi=999; //y
+    int lo=2;
+    while(hi>=lo){
+        int mid = (hi+lo)/2;
+        cout << "? 1 " << mid << endl;
+        int val;
+        cin >> val;
+        if(val>mid){
+            //go smaller
+            hi = mid-1;
+        }
+        else{
+            lo = mid+1;
+        }
+    }
+    cout << "! "<< hi+1 << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);
@@ -28,4 +40,3 @@ cin.tie(0);
         solve();
     }
 }
-

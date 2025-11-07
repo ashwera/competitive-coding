@@ -14,10 +14,23 @@ void print(const vector<int>& v) {
 }
 
 void solve() {
-    int n; cin >> n;
-    vector <int> v(n);
-    input
+    int cur, highest, increment, n;
+    cin >> cur >> highest >> increment >> n;
+    string v;
+    cin >> v;
 
+    int ans=0;
+    for(int i=0;i<n;i++){
+        if(v[i]=='1'){
+            ans++;
+            cur = max(0ll, cur-increment);
+        }
+        else{
+            if(cur<highest)
+            ans++;
+        }
+    }
+    cout << ans << endl;
 }
 signed main() {
 ios::sync_with_stdio(false);
@@ -28,4 +41,3 @@ cin.tie(0);
         solve();
     }
 }
-
