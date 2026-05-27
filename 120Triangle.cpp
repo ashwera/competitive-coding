@@ -8,7 +8,7 @@ using namespace std;
             for(int x:v)
             {
                 cout << x << " ";
-            }
+            }   
             cout << endl;
         }
     }
